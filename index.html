@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>12-Week Game Plan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="top">
+    <div class="brand">
+      <div class="eyebrow">12-Week Program · Fat loss · Strength · Energy</div>
+      <h1>Game Plan</h1>
+    </div>
+    <div class="today-date"><b id="dateBig">—</b><span id="dateSub">—</span></div>
+  </div>
+  <div class="rail">
+    <div class="rail-head">
+      <span class="eyebrow">Program track</span>
+      <span class="pos" id="weekPos">Week — / 12</span>
+    </div>
+    <div class="ticks" id="ticks"></div>
+  </div>
+</header>
+
+<nav id="nav">
+  <button class="tab active" data-tab="today">Today</button>
+  <button class="tab" data-tab="train">Train</button>
+  <button class="tab" data-tab="eat">Eat</button>
+  <button class="tab" data-tab="track">Track</button>
+  <button class="tab" data-tab="reset">Reset</button>
+</nav>
+
+<!-- ================= TODAY ================= -->
+<section class="panel show" data-panel="today">
+  <div id="todayStatus"></div>
+
+  <div class="card">
+    <h2>Protein hit today</h2>
+    <p class="lede">A palm of protein at each meal. This is the one rule that matters most.</p>
+    <div class="meals" id="meals">
+      <button class="meal" data-meal="0"><div class="lbl">Breakfast</div><div class="mk">○</div></button>
+      <button class="meal" data-meal="1"><div class="lbl">Lunch</div><div class="mk">○</div></button>
+      <button class="meal" data-meal="2"><div class="lbl">Dinner</div><div class="mk">○</div></button>
+    </div>
+  </div>
+
+  <div class="twocol">
+    <div class="card">
+      <h2>Gym</h2>
+      <p class="lede" style="margin-bottom:13px">Showing up at all counts. 30 minutes is a session.</p>
+      <button class="bigbtn" id="gymBtn">
+        <span><span class="t">Trained today</span><br><span class="s" id="gymCount">0 sessions this week</span></span>
+        <span class="state">tap to log</span>
+      </button>
+    </div>
+    <div class="card">
+      <h2>Fast food this week</h2>
+      <p class="lede" style="margin-bottom:13px">Cap is 2, planned. The drink + sides do the damage.</p>
+      <div class="counter">
+        <button id="ffMinus">−</button>
+        <span class="val" id="ffVal">0</span>
+        <button id="ffPlus">+</button>
+        <span class="cap" id="ffCap">/ 2 cap</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card tight">
+    <h3>The whole nutrition system, in 4 lines</h3>
+    <ul class="clean">
+      <li><b>Protein every meal</b> — palm-sized, breakfast/lunch/dinner.</li>
+      <li><b>Half the plate veg</b> at lunch and dinner.</li>
+      <li><b>Don't drink calories</b> — water, coffee, tea, zero-sugar only.</li>
+      <li><b>One fist of starch</b> per meal, not the whole plate.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= TRAIN ================= -->
+<section class="panel" data-panel="train">
+  <div class="card">
+    <h2>Pick the week you're having</h2>
+    <ul class="clean">
+      <li><b>2 days free</b> → 2× Full Body</li>
+      <li><b>3 days</b> → Full Body A / B / A</li>
+      <li><b>4 days</b> → Upper / Lower / Upper / Lower</li>
+    </ul>
+    <p class="lede">3 sessions on average beats a perfect 4-day plan you only half-do.</p>
+  </div>
+
+  <div class="twocol">
+    <div class="card">
+      <h3>Full Body (A / B alternate)</h3>
+      <ul class="clean">
+        <li>Squat or leg press — 3 sets</li>
+        <li>Push: chest or overhead press — 3 sets</li>
+        <li>Pull: row or lat pulldown — 3 sets</li>
+        <li>Hinge: RDL / hip-hinge — 2 sets</li>
+        <li>Accessory block — 10 min</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Upper / Lower (4-day weeks)</h3>
+      <ul class="clean">
+        <li>Upper: push, pull, push, pull — 2 sets each</li>
+        <li>Lower: squat, hinge, leg, calves</li>
+        <li>+ core / balance block</li>
+        <li>Everything in the <b>8–12 rep</b> range</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Progression · double progression</h2>
+    <p class="lede" style="margin-bottom:6px">Start at a weight you can do for 8 reps with 1–2 left in the tank. Add reps each session. Hit 12 on all sets → add weight, drop back to 8. Track only these four. Numbers slowly climbing = you're winning.</p>
+    <div id="lifts"></div>
+  </div>
+
+  <div class="section-eyebrow">
+    <div class="eyebrow">Accessory block · pick one per category</div>
+    <h2>Grip · elbow · stability</h2>
+  </div>
+
+  <div class="card tight">
+    <h3 style="color:var(--brass)">Grip strength</h3>
+    <div class="ex-grid" id="exGrip"></div>
+  </div>
+  <div class="card tight">
+    <h3 style="color:var(--protein)">Elbow / forearm — your typing joints</h3>
+    <p class="lede" style="margin:-4px 0 12px">Light weight, slow 3-second lowering. This is rehab, not ego. Slow eccentrics are what fix typist's elbow.</p>
+    <div class="ex-grid" id="exElbow"></div>
+  </div>
+  <div class="card tight">
+    <h3 style="color:var(--veg)">Balance / core stability</h3>
+    <div class="ex-grid" id="exCore"></div>
+  </div>
+</section>
+
+<!-- ================= EAT ================= -->
+<section class="panel" data-panel="eat">
+  <div class="card">
+    <div class="eyebrow" style="margin-bottom:10px">The signature · build any meal like this</div>
+    <div class="plate-wrap">
+      <div class="plate-svg" id="plateSvg"></div>
+      <div class="plate-key">
+        <div class="keyrow"><span class="sw" style="background:var(--veg)"></span><div><div class="k">Half plate — veg / salad</div><div class="v">lunch & dinner · any veg</div></div></div>
+        <div class="keyrow"><span class="sw" style="background:var(--protein)"></span><div><div class="k">Palm — protein</div><div class="v">meat · fish · eggs · dairy · beans</div></div></div>
+        <div class="keyrow"><span class="sw" style="background:var(--starch)"></span><div><div class="k">Fist — starch</div><div class="v">rice · bread · pasta · potato</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>The 4 rules</h2>
+    <div class="rule"><span class="n">1</span><div><div class="t">Protein at every meal</div><div class="d">A palm-sized portion at breakfast, lunch, dinner. Keeps you full, protects muscle while fat drops. If you get one rule right, it's this.</div></div></div>
+    <div class="rule"><span class="n">2</span><div><div class="t">Half the plate is veg or salad</div><div class="d">Lunch and dinner. Doesn't matter which. Volume without much energy = full without overeating.</div></div></div>
+    <div class="rule"><span class="n">3</span><div><div class="t">Don't drink your calories</div><div class="d">Water, coffee, tea, zero-sugar — yes. Juice, soda, sugary coffees, beer most nights — no. Removes huge energy with zero food willpower.</div></div></div>
+    <div class="rule"><span class="n">4</span><div><div class="t">One fist of starch per meal</div><div class="d">Carbs are fine — just right-sized. One fist, not the whole plate. You're not cutting, you're portioning.</div></div></div>
+  </div>
+
+  <div class="card">
+    <h3>Default meals — repeat these when you can't think</h3>
+    <div>
+      <span class="meal-chip"><span class="glyph">▸</span> Eggs + leftover veg + toast</span>
+      <span class="meal-chip"><span class="glyph">▸</span> Chicken/quark + rice + frozen veg</span>
+      <span class="meal-chip"><span class="glyph">▸</span> Tinned fish + salad bag + bread</span>
+      <span class="meal-chip"><span class="glyph">▸</span> Quark/yogurt + berries + nuts</span>
+    </div>
+    <p class="lede">Boring and repeatable beats varied and unsustainable. Rotate forever.</p>
+  </div>
+
+  <div class="twocol">
+    <div class="card tight">
+      <h3>Fast food — realistic, not "never"</h3>
+      <ul class="clean">
+        <li><b>Cap at 2/week</b>, planned on specific days — a decision, not a default</li>
+        <li>Grilled over fried · single over double</li>
+        <li><b>Skip the sugary drink</b> — halves the damage alone</li>
+        <li>Burger + water beats any "meal deal"</li>
+      </ul>
+    </div>
+    <div class="card tight">
+      <h3>Fallback for stressful days</h3>
+      <p class="lede" style="margin-top:0">The goal isn't "eat well" — it's <b style="color:var(--ink)">don't blow it up</b>. Minimum standard:</p>
+      <ul class="clean">
+        <li>Get protein in — a shake or rotisserie chicken counts</li>
+        <li>Don't drink calories</li>
+        <li>A "boring protein + water" day is a <b>success</b>, not a failure</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRACK ================= -->
+<section class="panel" data-panel="track">
+  <div class="card">
+    <h2>12-week targets</h2>
+    <div class="stat-row" id="targetStats"></div>
+  </div>
+
+  <div class="card">
+    <h2>Weight</h2>
+    <p class="lede" style="margin-bottom:4px">Once a week, same morning, after the toilet, before eating. Ignore daily numbers — the waist is the real signal.</p>
+    <svg class="chart" id="weightChart" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid meet"></svg>
+    <div class="logform">
+      <input id="wInput" type="number" inputmode="decimal" step="0.1" placeholder="kg — e.g. 126.4">
+      <button class="add" id="wAdd">Log weight</button>
+    </div>
+    <div class="loglist" id="wList"></div>
+  </div>
+
+  <div class="card">
+    <h2>Waist</h2>
+    <p class="lede" style="margin-bottom:4px">At the belly button. Monthly is enough. This tracks the visceral fat you actually care about.</p>
+    <div class="logform">
+      <input id="cInput" type="number" inputmode="decimal" step="0.1" placeholder="cm — e.g. 118">
+      <button class="add" id="cAdd">Log waist</button>
+    </div>
+    <div class="loglist" id="cList"></div>
+  </div>
+</section>
+
+<!-- ================= RESET ================= -->
+<section class="panel" data-panel="reset">
+  <div class="paperblock">
+    <div class="eyebrow">Emergency plan</div>
+    <h2 style="font-size:18px;margin-top:4px">You fell off for 3–7 days</h2>
+    <p class="lede">This is the section that decides whether a bad week becomes a bad year. Last time, the rebound came from a slip turning into a long break. This page exists to end it in one day.</p>
+  </div>
+
+  <div class="card">
+    <div class="emstep"><span class="n">1</span><div class="t"><b>No accounting, no guilt, no "starting Monday."</b> The cost of a bad week is the bad week — not a punishment week after it.</div></div>
+    <div class="emstep"><span class="n">2</span><div class="t"><b>Next meal, not next week.</b> Recovery starts at your very next meal: protein + water. That's the whole reset.</div></div>
+    <div class="emstep"><span class="n">3</span><div class="t"><b>Easy gym session within 48 hours.</b> Not to make up for it — just to break the seal. 30 minutes is plenty.</div></div>
+    <div class="emstep"><span class="n">4</span><div class="t"><b>Re-anchor with one default meal today.</b> Restock the always-in-the-house ingredients if needed.</div></div>
+    <div class="emstep"><span class="n">5</span><div class="t"><b>"Never two in a row" starts now.</b> The break is over the instant you decide it is.</div></div>
+  </div>
+
+  <div class="card">
+    <h3>One tap to restart the clock</h3>
+    <p class="lede" style="margin-top:0">Marks today as your re-start. Your logs and progress stay — this just resets the streak and clears guilt so you begin clean from your next meal.</p>
+    <button class="reset-btn" id="resetBtn">I'm back — restart from today</button>
+  </div>
+</section>
+
+<div class="disc">Not medical advice. Given your age, weight and elbow, a one-time check with a doctor — and a physio if the elbow turns sharp — is worth it before pushing hard.</div>
+<footer>Built to survive busy weeks, family life, and bad days.<br>Consistency over perfection · your data stays on this device.</footer>
+
+<div class="save-flash" id="flash">saved</div>
+
+<script>
+/* ---------------- storage layer ---------------- */
+const mem = {};
+const store = {
+  async get(k){ try{ if(window.storage){const r=await window.storage.get(k); return r?r.value:null;} }catch(e){} return mem[k]??null; },
+  async set(k,v){ mem[k]=v; try{ if(window.storage) await window.storage.set(k,v);}catch(e){} flash(); }
+};
+function flash(){ const f=document.getElementById('flash'); f.classList.add('show'); clearTimeout(flash._t); flash._t=setTimeout(()=>f.classList.remove('show'),900); }
+
+/* ---------------- state ---------------- */
+let S = { start:null, log:{}, gym:[], ff:{}, weights:[], waists:[], lifts:{}, lastReset:null };
+const todayKey = ()=> new Date().toISOString().slice(0,10);
+function weekKey(d=new Date()){ const t=new Date(d); t.setHours(0,0,0,0); t.setDate(t.getDate()+3-((t.getDay()+6)%7)); const w1=new Date(t.getFullYear(),0,4); return t.getFullYear()+'-W'+String(1+Math.round(((t-w1)/864e5-3+((w1.getDay()+6)%7))/7)).padStart(2,'0'); }
+
+async function load(){
+  const raw = await store.get('gameplan_v1');
+  if(raw){ try{ S = Object.assign(S, JSON.parse(raw)); }catch(e){} }
+  if(!S.start){ S.start = todayKey(); await save(); }
+  const li=['squat','press','row','hinge'];
+  li.forEach(k=>{ if(!S.lifts[k]) S.lifts[k]={w:'',r:''}; });
+}
+async function save(){ await store.set('gameplan_v1', JSON.stringify(S)); }
+
+/* ---------------- header / rail ---------------- */
+function programWeek(){ const d=Math.floor((new Date(todayKey())-new Date(S.start))/864e5); return Math.min(12, Math.max(1, Math.floor(d/7)+1)); }
+function renderHeader(){
+  const now=new Date();
+  document.getElementById('dateBig').textContent = now.toLocaleDateString(undefined,{weekday:'short',day:'numeric',month:'short'});
+  document.getElementById('dateSub').textContent = now.getFullYear();
+  const wk=programWeek();
+  document.getElementById('weekPos').textContent='Week '+wk+' / 12';
+  const t=document.getElementById('ticks'); t.innerHTML='';
+  for(let i=1;i<=12;i++){ const el=document.createElement('div');
+    el.className='tick'+(i<wk?' done':'')+(i===wk?' now':'');
+    el.innerHTML='<span>'+(i===1?'1':i===12?'12':i===wk?wk:'')+'</span>'; t.appendChild(el); }
+}
+
+/* ---------------- TODAY ---------------- */
+function dayRec(){ const k=todayKey(); if(!S.log[k]) S.log[k]={p:[false,false,false]}; return S.log[k]; }
+function isGoodDay(rec){ return rec.p.filter(Boolean).length>=2; }
+
+function renderToday(){
+  const rec=dayRec();
+  document.querySelectorAll('.meal').forEach((m,i)=>{ const on=rec.p[i];
+    m.classList.toggle('on',on); m.querySelector('.mk').textContent = on?'●':'○'; });
+  const wk=weekKey(); const cnt=S.gym.filter(d=>weekKey(new Date(d))===wk).length;
+  const trainedToday=S.gym.includes(todayKey());
+  const gb=document.getElementById('gymBtn'); gb.classList.toggle('on',trainedToday);
+  gb.querySelector('.state').textContent = trainedToday?'logged ✓':'tap to log';
+  document.getElementById('gymCount').textContent = cnt+' session'+(cnt===1?'':'s')+' this week';
+  const ff=S.ff[wk]||0; document.getElementById('ffVal').textContent=ff;
+  document.getElementById('ffCap').textContent = ff>2 ? 'over cap' : '/ 2 cap';
+  document.getElementById('ffVal').style.color = ff>2?'var(--warn)':'var(--ink)';
+  let bad2=false; const y=new Date(); y.setDate(y.getDate()-1); const yk=y.toISOString().slice(0,10);
+  const yRec=S.log[yk];
+  if(yRec && !isGoodDay(yRec) && !isGoodDay(rec)) bad2=true;
+  const box=document.getElementById('todayStatus'); const hit=rec.p.filter(Boolean).length;
+  if(bad2){ box.innerHTML='<div class="status warn"><span class="dot"></span>Two soft days in a row — the only rule that matters: make the next meal protein + water.</div>'; }
+  else if(hit===3){ box.innerHTML='<div class="status good"><span class="dot"></span>Protein 3/3 today. That\'s a winning day, scale or not.</div>'; }
+  else { box.innerHTML='<div class="status good"><span class="dot"></span>On track. '+hit+'/3 protein meals logged.</div>'; }
+}
+
+/* ---------------- TRAIN ---------------- */
+const LIFTS=[['squat','Squat / leg press'],['press','Press (chest or overhead)'],['row','Row / pulldown'],['hinge','Hinge / RDL']];
+function renderLifts(){
+  const wrap=document.getElementById('lifts'); wrap.innerHTML='';
+  LIFTS.forEach(([k,nm])=>{ const L=S.lifts[k]; const reps=parseInt(L.r)||0; const pct=Math.min(100,Math.max(0,(reps-8)/4*100));
+    const ready = reps>=12;
+    const row=document.createElement('div'); row.className='lift';
+    row.innerHTML=
+      '<div class="nm">'+nm+'<small>kg × reps</small></div>'+
+      '<div class="field"><label>kg</label><input data-lift="'+k+'" data-f="w" type="number" inputmode="decimal" value="'+L.w+'"></div>'+
+      '<div class="field"><label>reps</label><input data-lift="'+k+'" data-f="r" type="number" inputmode="numeric" value="'+L.r+'"></div>'+
+      '<div class="repbar"><i style="width:'+pct+'%"></i></div>'+
+      '<div class="repnote'+(ready?' ready':'')+'">'+(ready?'▲ hit 12 — add weight next session, drop back to 8':(reps?(12-reps)+' reps to the weight bump':'log your working set'))+'</div>';
+    wrap.appendChild(row);
+  });
+}
+
+/* exercise glyphs */
+function fig(paths){ return '<svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--brass)">'+paths+'</svg>'; }
+const G={
+  carry: fig('<circle cx="28" cy="11" r="4.5"/><path d="M28 16v16"/><path d="M28 20l-9 3M28 20l9 3"/><path d="M19 23v9M37 23v9"/><rect x="15" y="32" width="8" height="5" rx="1"/><rect x="33" y="32" width="8" height="5" rx="1"/><path d="M28 32l-5 13M28 32l5 13"/>'),
+  hang: fig('<path d="M10 12h36"/><path d="M28 12v6"/><circle cx="28" cy="22" r="4"/><path d="M28 26v12"/><path d="M28 30l-6 4M28 30l6 4"/><path d="M28 38l-4 8M28 38l4 8"/>'),
+  pinch: fig('<rect x="22" y="10" width="12" height="22" rx="2"/><path d="M28 32v8"/><circle cx="28" cy="44" r="3.5"/><path d="M18 18h4M34 18h4"/>'),
+  wrist: fig('<path d="M14 30c4-2 10-3 14-3s10 1 14 3"/><rect x="22" y="34" width="12" height="6" rx="2"/><path d="M14 30l-2 6M42 30l2 6"/><path d="M20 22c4 2 12 2 16 0"/>'),
+  reverse: fig('<path d="M16 34l12-8 12 8"/><rect x="22" y="20" width="12" height="6" rx="2"/><path d="M16 34v6M40 34v6"/>'),
+  roller: fig('<rect x="16" y="24" width="24" height="6" rx="3"/><path d="M28 30v12"/><rect x="25" y="42" width="6" height="6" rx="1"/><path d="M16 27h-4M40 27h4"/>'),
+  plank: fig('<path d="M10 38h36"/><path d="M14 38l8-14 18 0"/><circle cx="42" cy="22" r="3.5"/><path d="M22 24v14M30 30v8"/>'),
+  suitcase: fig('<circle cx="24" cy="11" r="4.5"/><path d="M24 16v18"/><path d="M24 20l9 3"/><path d="M33 23v10"/><rect x="29" y="33" width="8" height="5" rx="1"/><path d="M24 34l-4 12M24 34l4 12"/>'),
+  step: fig('<rect x="28" y="34" width="16" height="12" rx="1"/><circle cx="18" cy="13" r="4.5"/><path d="M18 18v12l8 6"/><path d="M18 30l-5 14"/>')
+};
+function renderEx(){
+  const set=(id,arr)=>{ const el=document.getElementById(id); el.innerHTML=arr.map(([g,nm,ds])=>
+    '<div class="ex">'+G[g]+'<div class="nm">'+nm+'</div><div class="ds">'+ds+'</div></div>').join(''); };
+  set('exGrip',[['carry','Farmer\'s carry','20–40m · 3 rds'],['hang','Dead hang','to comfort · 3 sets'],['pinch','Plate pinch','30s holds · 3']]);
+  set('exElbow',[['wrist','Wrist curl + ext','15 reps · slow down'],['reverse','Reverse curl','2 × 12'],['roller','Forearm roll','1–2 rounds']]);
+  set('exCore',[['suitcase','Suitcase carry','one-hand · 3 rds'],['plank','Plank','3 × 30–45s'],['step','Step-up / 1-leg','2 sets each leg']]);
+}
+
+/* ---------------- EAT · plate signature ---------------- */
+function renderPlate(){
+  const r=86, cx=100, cy=100;
+  const arc=(a0,a1,col)=>{ const x0=cx+r*Math.cos(a0),y0=cy+r*Math.sin(a0),x1=cx+r*Math.cos(a1),y1=cy+r*Math.sin(a1);
+    const large=(a1-a0)>Math.PI?1:0;
+    return '<path d="M'+cx+' '+cy+' L'+x0.toFixed(1)+' '+y0.toFixed(1)+' A'+r+' '+r+' 0 '+large+' 1 '+x1.toFixed(1)+' '+y1.toFixed(1)+' Z" fill="'+col+'"/>'; };
+  const svg='<svg width="200" height="200" viewBox="0 0 200 200">'+
+    '<circle cx="100" cy="100" r="92" fill="none" stroke="var(--line)" stroke-width="6"/>'+
+    arc(Math.PI/2, 3*Math.PI/2, 'var(--veg)')+
+    arc(-Math.PI/2, 0, 'var(--protein)')+
+    arc(0, Math.PI/2, 'var(--starch)')+
+    '<circle cx="100" cy="100" r="86" fill="none" stroke="var(--bg)" stroke-width="3"/>'+
+    '<text x="55" y="105" fill="#11140f" font-family="var(--mono)" font-size="13" font-weight="700" text-anchor="middle">½ VEG</text>'+
+    '<text x="138" y="78" fill="#1a120c" font-family="var(--mono)" font-size="12" font-weight="700" text-anchor="middle">PALM</text>'+
+    '<text x="138" y="132" fill="#1a140a" font-family="var(--mono)" font-size="12" font-weight="700" text-anchor="middle">FIST</text>'+
+    '</svg>';
+  document.getElementById('plateSvg').innerHTML=svg;
+}
+
+/* ---------------- TRACK ---------------- */
+function num(v){ const n=parseFloat(v); return isNaN(n)?null:n; }
+function renderTargets(){
+  const w=S.weights, c=S.waists;
+  const startW = w.length?w[0].v:null, curW = w.length?w[w.length-1].v:null;
+  const startC = c.length?c[0].v:null, curC = c.length?c[c.length-1].v:null;
+  const goalW = startW? Math.max(0,(startW-7)) : null;
+  const mk=(label,cur,unit,delta,goal)=>{
+    let dh=''; if(delta!=null){ const cls=delta<=0?'down':'up'; dh='<div class="delta '+cls+'">'+(delta<=0?'▼ ':'▲ +')+Math.abs(delta).toFixed(1)+' '+unit+'</div>'; }
+    return '<div class="stat"><div class="l">'+label+'</div><div class="v">'+(cur!=null?cur+'<small> '+unit+'</small>':'—')+'</div>'+
+      (goal!=null?'<div class="delta">target '+goal.toFixed(0)+' '+unit+'</div>':'')+dh+'</div>';
+  };
+  document.getElementById('targetStats').innerHTML =
+    mk('Weight', curW, 'kg', (curW!=null&&startW!=null)?curW-startW:null, goalW) +
+    mk('Waist', curC, 'cm', (curC!=null&&startC!=null)?curC-startC:null, startC?startC-5:null) +
+    '<div class="stat"><div class="l">Gym · total</div><div class="v">'+S.gym.length+'<small> sessions</small></div><div class="delta">target ~36 over 12 wks</div></div>';
+}
+function renderChart(){
+  const svg=document.getElementById('weightChart'); const w=S.weights;
+  if(w.length<2){ svg.innerHTML='<text x="300" y="110" fill="var(--ink-faint)" font-family="var(--mono)" font-size="13" text-anchor="middle">Log two weigh-ins to see the line.</text>'; return; }
+  const W=600,H=220,pad={l:46,r:16,t:18,b:30};
+  const vals=w.map(p=>p.v); const goal=Math.max(0,vals[0]-7);
+  const min=Math.min(...vals,goal)-1.5, max=Math.max(...vals)+1.5;
+  const x=i=>pad.l+(i/(w.length-1))*(W-pad.l-pad.r);
+  const y=v=>pad.t+(1-(v-min)/(max-min))*(H-pad.t-pad.b);
+  let g='';
+  g+='<line x1="'+pad.l+'" y1="'+y(goal).toFixed(1)+'" x2="'+(W-pad.r)+'" y2="'+y(goal).toFixed(1)+'" stroke="var(--veg)" stroke-width="1.5" stroke-dasharray="5 5" opacity=".7"/>';
+  g+='<text x="'+(W-pad.r)+'" y="'+(y(goal)-5).toFixed(1)+'" fill="var(--veg)" font-family="var(--mono)" font-size="10" text-anchor="end">target '+goal.toFixed(0)+'kg</text>';
+  [min,(min+max)/2,max].forEach(v=>{ g+='<text x="'+(pad.l-8)+'" y="'+(y(v)+3).toFixed(1)+'" fill="var(--ink-faint)" font-family="var(--mono)" font-size="9" text-anchor="end">'+v.toFixed(0)+'</text>'; });
+  const pts=w.map((p,i)=>x(i).toFixed(1)+','+y(p.v).toFixed(1));
+  g+='<polyline points="'+pts.join(' ')+'" fill="none" stroke="var(--brass)" stroke-width="2.5"/>';
+  w.forEach((p,i)=>{ g+='<circle cx="'+x(i).toFixed(1)+'" cy="'+y(p.v).toFixed(1)+'" r="3.5" fill="var(--brass)" stroke="var(--bg)" stroke-width="2"/>'; });
+  g+='<text x="'+x(w.length-1).toFixed(1)+'" y="'+(y(vals[vals.length-1])-9).toFixed(1)+'" fill="var(--ink)" font-family="var(--mono)" font-size="11" text-anchor="middle">'+vals[vals.length-1]+'</text>';
+  svg.innerHTML=g;
+}
+function renderLogList(id,arr,unit,key){
+  const el=document.getElementById(id);
+  if(!arr.length){ el.innerHTML='<div class="empty">No entries yet.</div>'; return; }
+  el.innerHTML=arr.slice().reverse().map((p,ri)=>{ const i=arr.length-1-ri;
+    return '<div class="logitem"><span>'+new Date(p.d).toLocaleDateString(undefined,{day:'numeric',month:'short'})+'</span>'+
+      '<span>'+p.v+' '+unit+' <button data-del="'+key+'" data-i="'+i+'">✕</button></span></div>'; }).join('');
+}
+function renderTrack(){ renderTargets(); renderChart();
+  renderLogList('wList',S.weights,'kg','weights'); renderLogList('cList',S.waists,'cm','waists'); }
+
+/* ---------------- full render ---------------- */
+function renderAll(){ renderHeader(); renderToday(); renderLifts(); renderTrack(); }
+
+/* ---------------- events ---------------- */
+function show(tab){ document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('show',p.dataset.panel===tab));
+  if(tab==='track'){ renderTrack(); } if(tab==='today'){ renderToday(); } window.scrollTo({top:0,behavior:'smooth'}); }
+
+document.getElementById('nav').addEventListener('click',e=>{ const b=e.target.closest('.tab'); if(b) show(b.dataset.tab); });
+
+document.getElementById('meals').addEventListener('click',async e=>{ const m=e.target.closest('.meal'); if(!m)return;
+  const i=+m.dataset.meal; const rec=dayRec(); rec.p[i]=!rec.p[i]; await save(); renderToday(); });
+
+document.getElementById('gymBtn').addEventListener('click',async()=>{ const k=todayKey();
+  const idx=S.gym.indexOf(k); if(idx>=0) S.gym.splice(idx,1); else S.gym.push(k); await save(); renderToday(); renderTargets(); });
+
+document.getElementById('ffPlus').addEventListener('click',async()=>{ const wk=weekKey(); S.ff[wk]=(S.ff[wk]||0)+1; await save(); renderToday(); });
+document.getElementById('ffMinus').addEventListener('click',async()=>{ const wk=weekKey(); S.ff[wk]=Math.max(0,(S.ff[wk]||0)-1); await save(); renderToday(); });
+
+document.getElementById('lifts').addEventListener('input',async e=>{ const inp=e.target.closest('input'); if(!inp)return;
+  const k=inp.dataset.lift; S.lifts[k][inp.dataset.f]=inp.value;
+  const row=inp.closest('.lift'); const reps=parseInt(S.lifts[k].r)||0;
+  const pct=Math.min(100,Math.max(0,(reps-8)/4*100)); const ready=reps>=12;
+  row.querySelector('.repbar i').style.width=pct+'%';
+  const note=row.querySelector('.repnote'); note.classList.toggle('ready',ready);
+  note.textContent = ready?'▲ hit 12 — add weight next session, drop back to 8':(reps?(12-reps)+' reps to the weight bump':'log your working set');
+  await save(); });
+
+function addLog(arr,inputId){ const el=document.getElementById(inputId); const v=num(el.value); if(v==null)return null;
+  arr.push({d:todayKey(),v:Math.round(v*10)/10}); arr.sort((a,b)=>a.d.localeCompare(b.d)); el.value=''; return v; }
+document.getElementById('wAdd').addEventListener('click',async()=>{ if(addLog(S.weights,'wInput')!=null){ await save(); renderTrack(); } });
+document.getElementById('cAdd').addEventListener('click',async()=>{ if(addLog(S.waists,'cInput')!=null){ await save(); renderTrack(); } });
+['wInput','cInput'].forEach(id=>document.getElementById(id).addEventListener('keydown',e=>{ if(e.key==='Enter') document.getElementById(id==='wInput'?'wAdd':'cAdd').click(); }));
+
+document.querySelector('[data-panel="track"]').addEventListener('click',async e=>{ const b=e.target.closest('[data-del]'); if(!b)return;
+  S[b.dataset.del].splice(+b.dataset.i,1); await save(); renderTrack(); });
+
+document.getElementById('resetBtn').addEventListener('click',async()=>{ S.lastReset=todayKey();
+  const b=document.getElementById('resetBtn'); b.textContent='Clock restarted — next meal: protein + water'; b.style.background='var(--veg)';
+  await save(); setTimeout(()=>{ b.textContent="I'm back — restart from today"; b.style.background='var(--warn)'; },2600); });
+
+/* ---------------- boot ---------------- */
+(async function(){ await load(); renderPlate(); renderEx(); renderAll(); })();
+</script>
+
+</body>
+</html>
